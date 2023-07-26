@@ -25,7 +25,7 @@ function task4_2() {
   Сделайте из этого массива следующий [1, 2, 3, 6, 7]
   */
 
-  let arr = [1, 2, 3, 4, 5, 6, 7];
+  const arr = [1, 2, 3, 4, 5, 6, 7];
   arr.splice(3, 2);
   console.log(arr);
 }
@@ -39,7 +39,7 @@ function task4_3() {
   3. Найти есть ли в этом массиве число 3
   */
 
-  let arr = [];
+  const arr = [];
   const arraySize = 5;
   const searchNumber = 3;
   for (let i = 0; i < arraySize; i++)
@@ -68,7 +68,7 @@ function task4_4() {
   */
 
   const slideSize = 20;
-  let arr = [];
+  const arr = [];
   for (let i = 0; i < slideSize; i++) {
     arr.push('x');
     console.log(arr.toString().replaceAll(',', ''));
