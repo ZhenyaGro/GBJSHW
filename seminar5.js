@@ -82,4 +82,61 @@ function task5_3() {
 
 }
 
-task5_3();
+function task5_4() {
+  /*
+  Задание 4
+  1. Необходимо вывести в консоль массив продуктов в котором есть хоть одна фотография используя метод filter. Исходные данные - массив products.
+  2. Необходимо отсортировать массив products используя метод sort по цене, начиная с самой маленькой, заканчивая самой большой ценой, после чего вывести отсортированный массив в консоль.
+  */
+
+  const products = [
+    {
+      id: 3,
+      price: 127,
+      photos: [
+        "1.jpg",
+        "2.jpg",
+      ],
+    },
+    {
+      id: 5,
+      price: 499,
+      photos: [],
+    },
+    {
+      id: 10,
+      price: 26,
+      photos: [
+        "3.jpg",
+      ],
+    },
+    {
+      id: 8,
+      price: 78,
+    },
+  ];
+
+  console.log('Продукты с фотографиями:');
+  console.log(products.filter(product => product.hasOwnProperty('photos') && product.photos.length !== 0));
+
+  console.log('Продукты по возрастанию цены:');
+  console.log(products.sort((product1, product2) => product1.price > product2.price ? 1 : -1));
+}
+
+function task5_5() {
+  /*
+  **Задание 5**
+  Дано 2 массива
+  Вам необходимо объединить 2 этих массива, чтобы значения первого массива были ключами, а значения второго массива — значениями.
+  */
+
+  const en = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+  const ru = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"];
+
+  const result = en.reduce((acc, key, index) => {
+    acc[key] = ru[index];
+    return acc;
+  }, {});
+
+  console.log(result);
+}
