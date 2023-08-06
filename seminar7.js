@@ -130,7 +130,7 @@ function task7_3() {
       if (!(client instanceof Client))
         throw new Error('Parameter is not a Client');
       if (this.#clients.includes(client))
-        throw new Error('Cliend is already exists');
+        throw new Error('Client is already exists');
 
       this.#clients.push(client);
     }
