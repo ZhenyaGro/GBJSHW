@@ -136,24 +136,34 @@ function task7_3() {
     }
 
     openAccount(client, money) {
-      if (!this.#clients.includes(client))
+      const foundClient = this.#clients.find(item => item === client);
+
+      if (foundClient === -1)
         throw new Error(`It's not a Bank client`);
 
-      this.#accounts.push(client);
+      this.#accounts.push(new Account(foundClient, money));
     }
 
-    deposit() {
+    deposit(accountId, money) {
+      if (accountId > this.#accounts.length)
+        throw new Error('There is no account');
 
+      this.#accounts[accountId].deposit(money);
     }
 
-    withDraw() {
+    withDraw(accountId, money) {
+      if (accountId > this.#accounts.length)
+        throw new Error('There is no account');
 
+      this.#accounts[accountId].withDraw(money);
     }
 
-    checkBalance() {
+    checkBalance(accountId) {
+      if (accountId > this.#accounts.length)
+        throw new Error('There is no account');
 
+      console.log(this.#accounts[accountId].getBalance());
     }
-
   }
 
   class Client {
@@ -172,6 +182,52 @@ function task7_3() {
     }
   }
 
+  class Account {
+    #accountOwner;
+    #balance;
+    #isOpened;
+
+    constructor(owner, money) {
+      this.#accountOwner = owner;
+      this.#balance = money;
+      this.#isOpened = true;
+    }
+
+    getBalance() {
+      this.checkIsOpen();
+      return this.#balance;
+    }
+
+    getOwner() {
+      return this.#accountOwner;
+    }
+
+    deposit(money) {
+      this.checkIsOpen();
+      this.#balance += money;
+    }
+
+    withDraw(money) {
+      this.checkIsOpen();
+      const remain = this.#balance - money;
+
+      if (remain < 0)
+        throw new Error('Insufficient funds');
+
+      this.#balance = remain;
+    }
+
+    closeAccount() {
+      this.checkIsOpen();
+      this.#isOpened = false;
+    }
+
+    checkIsOpen() {
+      if (!this.#isOpened)
+        throw new Error('Account is closed');
+    }
+  }
+
   const bank = new Bank("Мой Банк");
 
   const client1 = new Client("Иван", 25);
@@ -181,6 +237,15 @@ function task7_3() {
   bank.addClient(client2);
 
   bank.displayInfo();
+
+  bank.openAccount(client1, 200);
+  bank.openAccount(client2, 300);
+  bank.openAccount(client1, 500);
+
+  bank.deposit(0, 1000);
+  bank.checkBalance(0);
+  bank.withDraw(0, 100);
+  bank.checkBalance(0);
 }
 
 task7_3();
