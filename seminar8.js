@@ -99,7 +99,7 @@ function task8_2() {
     }
 
     getTotalPrice() {
-      this.#products.reduce((sum, product) => sum + product.price, 0);
+      return this.#products.reduce((sum, product) => sum + product.price, 0);
     }
   }
 
