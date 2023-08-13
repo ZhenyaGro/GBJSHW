@@ -14,7 +14,10 @@ function createUserBlock() {
     buttonRemove.classList.add('main__button-remove');
     buttonRemove.setAttribute('id', `button-${divCount}`);
     document.getElementById(`block-${divCount}`).insertAdjacentElement('beforeend', buttonRemove);
-    buttonRemove.addEventListener('click', e => console.log(`click! ${e.target.id}`))
+    buttonRemove.addEventListener('click', e => {
+      localStorage.removeItem(`User № ${e.target.id.replace('button-', '')}`);
+      document.getElementById(`block-${e.target.id.replace('button-', '')}`).remove();
+    });
   }
 }
 
