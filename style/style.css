@@ -40,4 +40,7 @@
 }
 .main__button-remove:hover {
   background-color: bisque;
+}
+.main__img {
+  width: 360px;
 }/*# sourceMappingURL=style.css.map */
