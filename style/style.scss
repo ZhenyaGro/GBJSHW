@@ -30,7 +30,17 @@
   }
 
   &__block {
+    position: relative;
     border: 3px solid gainsboro;
     border-radius: 10px;
+  }
+
+  &__button-remove {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 26px;
+    height: 26px;
+    border-radius: 30px;
   }
 }

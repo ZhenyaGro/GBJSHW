@@ -26,6 +26,15 @@
   flex-wrap: wrap;
 }
 .main__block {
+  position: relative;
   border: 3px solid gainsboro;
   border-radius: 10px;
+}
+.main__button-remove {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 30px;
 }/*# sourceMappingURL=style.css.map */
