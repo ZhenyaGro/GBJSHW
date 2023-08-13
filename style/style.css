@@ -37,4 +37,7 @@
   width: 26px;
   height: 26px;
   border-radius: 30px;
+}
+.main__button-remove:hover {
+  background-color: bisque;
 }/*# sourceMappingURL=style.css.map */
